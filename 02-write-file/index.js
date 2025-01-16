@@ -14,17 +14,19 @@ fileHandler()
 const rl = readline.createInterface({ input, output });
 const rl1=function (){
     rl.question('Введите текст',(answer)=> {
-        fs.appendFile(path.resolve('writeText.txt'),answer,(err)=> {
-            if (err) throw err
-        })
-        rl1()
+        if (answer==='exit') {
+        process.exit()
+        }
+            fs.appendFile(path.resolve('writeText.txt'), answer, (err) => {
+                if (err) throw err
+            })
+            rl1()
     })
 }
 
 rl1()
 process.on('exit', () => {
-    console.log('\nЗавершаем программу');
+    console.log('\nЗавершаем программу ');
     rl.close();
-    // process.exit(0);
 });
 
