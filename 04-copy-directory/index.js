@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require("path");
 
-const sourceDir = 'files';
-const targetDir = 'newFiles';
+const sourceDir = path.join(__dirname, 'files');
+const targetDir = path.join(__dirname, 'newFiles');
+
+console.log('sourceDir:', sourceDir);
+console.log('targetDir:', targetDir);
 
 function removeAndCreateNewFolder() {
     fs.rm(targetDir, { recursive: true, force: true }, (err) => {
@@ -26,8 +29,8 @@ function copyFiles() {
         }
 
         files1.forEach(file => {
-            const filePath = path.join(sourceDir, file.name);
-            const newFilePath = path.join(targetDir, file.name);
+            const filePath = path.join( sourceDir, file.name);
+            const newFilePath = path.join( targetDir, file.name);
 
             fs.stat(filePath, (err, stats) => {
                 if (err) {

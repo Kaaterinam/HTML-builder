@@ -17,7 +17,7 @@ const rl1=function (){
         if (answer==='exit') {
         process.exit()
         }
-            fs.appendFile(path.resolve('writeText.txt'), answer, (err) => {
+            fs.appendFile(path.join(__dirname, 'writeText.txt'), answer, (err) => {
                 if (err) throw err
             })
             rl1()
